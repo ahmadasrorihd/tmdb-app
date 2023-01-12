@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.paging.ExperimentalPagingApi
@@ -49,6 +50,8 @@ class MovieDetailActivity : AppCompatActivity() {
         getMovieDetail(movieId!!.toInt())
         getReviews(movieId!!.toInt())
         getTrailers(movieId!!.toInt())
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     @SuppressLint("SetTextI18n")
@@ -56,9 +59,16 @@ class MovieDetailActivity : AppCompatActivity() {
         mainViewModel.getMovieDetail(movieId).observe(this) { response ->
             when(response) {
                 is ApiResponse.Loading -> {
-                    showToast(R.string.state_loading)
+                    binding.apply {
+                        bgDim.visibility = View.VISIBLE
+                        pgBar.visibility = View.VISIBLE
+                    }
                 }
                 is ApiResponse.Success -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     binding.tvTitle.text = response.data.title
                     binding.tvReleaseDate.text = "release date : "+response.data.releaseDate
                     binding.tvDuration.text = "vote average : "+response.data.voteAverage
@@ -69,6 +79,10 @@ class MovieDetailActivity : AppCompatActivity() {
                         .into(binding.ivMovie)
                 }
                 is ApiResponse.Error -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     showToast(R.string.state_error)
                 }
             }
@@ -79,9 +93,16 @@ class MovieDetailActivity : AppCompatActivity() {
         mainViewModel.getReviews(movieId).observe(this) { response ->
             when(response) {
                 is ApiResponse.Loading -> {
-                    showToast(R.string.state_loading)
+                    binding.apply {
+                        bgDim.visibility = View.VISIBLE
+                        pgBar.visibility = View.VISIBLE
+                    }
                 }
                 is ApiResponse.Success -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     response.let {
                         if (response.data.results!!.isEmpty()) {
                             binding.tvTitleReview.text = getString(R.string.no_reviews)
@@ -92,6 +113,10 @@ class MovieDetailActivity : AppCompatActivity() {
                     }
                 }
                 is ApiResponse.Error -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     showToast(R.string.state_error)
                 }
             }
@@ -111,9 +136,16 @@ class MovieDetailActivity : AppCompatActivity() {
         mainViewModel.getTrailers(movieId).observe(this) { response ->
             when(response) {
                 is ApiResponse.Loading -> {
-                    showToast(R.string.state_loading)
+                    binding.apply {
+                        bgDim.visibility = View.VISIBLE
+                        pgBar.visibility = View.VISIBLE
+                    }
                 }
                 is ApiResponse.Success -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     response.let {
                         if (response.data.results!!.isEmpty()) {
                             binding.tvTitleReview.text = getString(R.string.no_trailers)
@@ -125,6 +157,10 @@ class MovieDetailActivity : AppCompatActivity() {
                     }
                 }
                 is ApiResponse.Error -> {
+                    binding.apply {
+                        bgDim.visibility = View.GONE
+                        pgBar.visibility = View.GONE
+                    }
                     showToast(R.string.state_error)
                 }
             }

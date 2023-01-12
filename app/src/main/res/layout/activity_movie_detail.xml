@@ -113,7 +113,19 @@
                     tools:itemCount="2"
                     tools:listitem="@layout/item_review" />
             </RelativeLayout>
-
         </RelativeLayout>
     </ScrollView>
+    <View
+        android:visibility="gone"
+        android:id="@+id/bg_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlackDim"
+        android:elevation="@dimen/dimen_2dp" />
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pgBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
