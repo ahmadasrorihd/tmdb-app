@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022. Test copy Right
- */
-
 package com.ahmadasrori.tmdb.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
