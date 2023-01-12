@@ -1,0 +1,44 @@
+Skenario Testing
+
+ViewModel :
+
+1. Ketika berhasil memuat data story
+- memastikan data tidak null
+- memastikan jumlah data sesuai dengan yang diharapkan
+
+2. Ketika berhasil memuat data story dengan location
+- memastikan data tidak null
+- memastikan response success
+
+3. ketika berhasil menambahkan data story
+- memastikan data berhasil dikirim dengan response success
+
+4. ketika berhasil melakukan login
+- memastikan proses login berhasil dengan response success
+
+5. ketika berhasil melakukan register
+- memastikan proses register berhasil dengan response success
+
+Repository :
+
+1. ketika login
+- memastikan response tidak null
+- memastikan proses login sukses
+
+2. ketika register
+- memastikan response tidak null
+- memastikan proses register sukses
+
+3. ketika memanggil getAllStoryWithLocation
+- memastikan respon tidak null
+- memastikan jumlah data sesuai dengan yang diharapkan
+
+4. ketika memanggil getAllStory
+- memastikan respon tidak null
+- memastikan jumlah data sesuai dengan yang diharapkan
+
+5. ketika memanggil addStory
+- memastikan respon tidak null
+- memastikan proses addStory sukses
+
+
