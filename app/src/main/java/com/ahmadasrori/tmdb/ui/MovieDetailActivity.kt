@@ -54,6 +54,11 @@ class MovieDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     @SuppressLint("SetTextI18n")
     private fun getMovieDetail(movieId: Int) {
         mainViewModel.getMovieDetail(movieId).observe(this) { response ->
